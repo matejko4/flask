@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    deploy:
+      resources:
+        limits:
+          memory: 200M
+    volumes:
+      - flask_data:/image/data
+    restart: always
+
+volumes:
+  flask_data:
+    driver: local
